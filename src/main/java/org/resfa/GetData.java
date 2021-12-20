@@ -37,6 +37,7 @@ public class GetData {
                 .add("cityId", "1,2")
                 .add("sourceId", "1,2")
                 .add("polygon", polygon)
+                .add("categoryId","1,2,3,4")
                 .build();
 
         Request request = new Request.Builder()
