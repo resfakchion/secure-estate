@@ -1,4 +1,4 @@
-package org.resfa;
+package org.resfa.pojo;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -56,5 +56,34 @@ public class RealEstate {
         this.source = source;
         this.created = created;
         this.updated = updated;
+    }
+
+    @Override
+    public String toString() {
+        return "RealEstate{" +
+                "id=" + id +
+                ", regionId=" + regionId +
+                ", cityId=" + cityId +
+                ", typeAd=" + typeAd +
+                ", sectionId=" + sectionId +
+                ", categoryId=" + categoryId +
+                ", title='" + title + '\'' +
+                ", address='" + address + '\'' +
+                ", floor=" + floor +
+                ", sq=" + sq +
+                ", sqLand=" + sqLand +
+                ", cost=" + cost +
+                ", text='" + text + '\'' +
+                ", images=" + images +
+                ", lat='" + lat + '\'' +
+                ", lng='" + lng + '\'' +
+                ", name='" + name + '\'' +
+                ", phones=" + phones +
+                ", url='" + url + '\'' +
+                ", agent=" + agent +
+                ", source='" + source + '\'' +
+                ", created=" + created +
+                ", updated=" + updated +
+                '}';
     }
 }

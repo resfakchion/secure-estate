@@ -1,4 +1,4 @@
-package org.resfa;
+package org.resfa.pojo;
 
 public enum District {
     Admiralteisky("admiralteisky.txt"),

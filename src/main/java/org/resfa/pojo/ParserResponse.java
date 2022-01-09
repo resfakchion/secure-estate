@@ -1,4 +1,4 @@
-package org.resfa;
+package org.resfa.pojo;
 
 import java.util.ArrayList;
 

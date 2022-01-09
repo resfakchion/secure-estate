@@ -1,32 +1,30 @@
-package org.resfa;
+package org.resfa.service;
 
 import com.google.gson.Gson;
-import com.google.gson.internal.LinkedTreeMap;
 import okhttp3.*;
+import org.resfa.pojo.District;
+import org.resfa.pojo.ParserResponse;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
+@ApplicationScoped
 public class GetData {
-    public static void main(String[] args) throws IOException {
+    public ParserResponse getData(District district) throws IOException {
         GetData getData = new GetData();
-        Path path = Paths.get(String.format("src/main/resources/polygons/%s", District.Admiralteisky));
-
+        Path path = Paths.get(String.format("src/main/resources/polygons/%s", district.getName()));
         BufferedReader reader = Files.newBufferedReader(path);
         String line = reader.readLine();
         Response response = getData.polygonRequest(line);
         String string = response.body().string();
         Gson gson = new Gson();
         ParserResponse parserResponse = gson.fromJson(string, ParserResponse.class);
-        System.out.println(parserResponse);
+        return parserResponse;
     }
 
     public Response polygonRequest(String polygon) throws IOException {

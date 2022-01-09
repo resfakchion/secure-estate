@@ -1,4 +1,4 @@
-package org.resfa;
+package org.resfa.pojo;
 
 public class Meta {
     public Double limit;
