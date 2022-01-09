@@ -18,17 +18,15 @@ import java.util.Map;
 public class GetData {
     public static void main(String[] args) throws IOException {
         GetData getData = new GetData();
-        Path path = Paths.get("src/main/resources/polygons/admiralteisky.txt");
+        Path path = Paths.get(String.format("src/main/resources/polygons/%s", District.Admiralteisky));
 
         BufferedReader reader = Files.newBufferedReader(path);
         String line = reader.readLine();
         Response response = getData.polygonRequest(line);
         String string = response.body().string();
         Gson gson = new Gson();
-        Object object = gson.fromJson(string,Object.class);
-        List<LinkedTreeMap<String, Object>> linkedTreeMaps = new ArrayList<>();
-        linkedTreeMaps = (List<LinkedTreeMap<String, Object>>) ((LinkedTreeMap) object).get("data");
-        System.out.println(object);
+        ParserResponse parserResponse = gson.fromJson(string, ParserResponse.class);
+        System.out.println(parserResponse);
     }
 
     public Response polygonRequest(String polygon) throws IOException {
@@ -37,11 +35,12 @@ public class GetData {
                 .add("cityId", "1,2")
                 .add("sourceId", "1,2")
                 .add("polygon", polygon)
-                .add("categoryId","1,2,3,4")
+                .add("categoryId", "1,2,3,4")
+                .add("limit", "100")
                 .build();
 
         Request request = new Request.Builder()
-                .addHeader("Accept","application/json")
+                .addHeader("Accept", "application/json")
                 .url("https://inpars.ru/api/v2/estate?access-token=fhGZ5Fq5q1U6jWAd3FPAHdAKsNwWkHEc")
                 .post(formBody)
                 .build();
