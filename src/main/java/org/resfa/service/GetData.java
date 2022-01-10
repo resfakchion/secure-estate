@@ -34,7 +34,7 @@ public class GetData {
                 .add("sourceId", "1,2")
                 .add("polygon", polygon)
                 .add("categoryId", "1,2,3,4")
-                .add("limit", "100")
+                .add("limit", "20")
                 .build();
 
         Request request = new Request.Builder()

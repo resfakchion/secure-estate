@@ -1,6 +1,7 @@
 package org.resfa.service;
 
 
+import org.jboss.resteasy.annotations.jaxrs.PathParam;
 import org.resfa.pojo.District;
 import org.resfa.pojo.ParserResponse;
 
@@ -11,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.Arrays;
 
 @Path("/api")
 @Produces(MediaType.APPLICATION_JSON)
@@ -19,10 +21,15 @@ public class SecureRealEstateResource {
     public GetData getData;
 
 
-    @Path("/moscow")
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     @GET
-    public Response getAllBooks() throws IOException {
-        ParserResponse data = getData.getData(District.Moskovsky);
+    public Response getAllBooks(@PathParam String id) throws IOException {
+        District district = Arrays.stream(District.values())
+                .filter(x -> x.getNumber() == Integer.parseInt(id))
+                .findFirst()
+                .orElseThrow();
+        ParserResponse data = getData.getData(district);
         return Response.ok(data.data).build();
     }
 

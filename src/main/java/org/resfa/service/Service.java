@@ -33,7 +33,7 @@ public class Service {
         return Arrays.stream(line.replaceAll(" ", ",")
                 .replace(")", "")
                 .replace("(", "")
-                .split(",")).toList();
+                .split(",")).collect(Collectors.toList());
     }
 
     public void writeCoordinates(List<String> result, String pathName) throws IOException {
