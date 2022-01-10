@@ -30,7 +30,7 @@ public class SecureRealEstateResource {
                 .findFirst()
                 .orElseThrow();
         ParserResponse data = getData.getData(district);
-        return Response.ok(data.data).build();
+        return Response.ok().type("application/json").entity(data.data).build();
     }
 
 }
