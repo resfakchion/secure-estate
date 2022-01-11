@@ -18,7 +18,7 @@ public class IOExceptionMapper implements javax.ws.rs.ext.ExceptionMapper<IOExce
 
     public Response toResponse(IOException exception) {
         this.logger.error("Ошибка работы сервиса", exception);
-        return Response.status(403).type("application/json").entity("Ошибка ввода").build();
+        return Response.status(403).type("application/json").entity("Ошибка ввода: " + exception.getMessage()).build();
     }
 
 

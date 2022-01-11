@@ -38,11 +38,11 @@ public class SecureRealEstateResource {
     @POST
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getOptionalEstate(@PathParam String id, SecureRealEstateRequest request) throws IOException {
+    public Response getOptionalEstate(@PathParam String id, SecureRealEstateRequest request) throws Exception {
         District district = Arrays.stream(District.values())
                 .filter(x -> x.getNumber() == Integer.parseInt(id))
                 .findFirst()
-                .orElseThrow();
+                .orElseThrow(() -> new Exception("Некорректный id района!"));
         ParserResponse data = getData.getData(district);
         return Response.ok().type("application/json").entity(data.data).build();
     }

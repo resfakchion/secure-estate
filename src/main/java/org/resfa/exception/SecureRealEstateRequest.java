@@ -1,16 +1,14 @@
 package org.resfa.exception;
 
 
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import okhttp3.Address;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
-import javax.validation.Valid;
-import javax.validation.constraints.*;
-import java.math.BigDecimal;
-import java.util.List;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Positive;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder({

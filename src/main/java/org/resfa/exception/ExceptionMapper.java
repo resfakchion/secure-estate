@@ -17,6 +17,6 @@ public class ExceptionMapper implements javax.ws.rs.ext.ExceptionMapper<Exceptio
 
     public Response toResponse(Exception exception) {
         this.logger.error("Ошибка работы сервиса", exception);
-        return Response.status(400).type("application/json").entity("Внутренняя ошибка сервиса").build();
+        return Response.status(400).type("application/json").entity("Внутренняя ошибка сервиса: " + exception.getMessage()).build();
     }
 }
