@@ -1,4 +1,4 @@
-package org.resfa.exception;
+package org.resfa.request;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -26,21 +26,21 @@ public class SecureRealEstateRequest {
     @Digits(integer = 9, fraction = 2, message = "Указана неверная цена недвижимости")
     @Min(value = 350_000, message = "Цена недвижимости не может быть меньше 350.000")
     @Max(value = 1_000_000_000, message = "Цена недвижимости не может быть больше 1.000.000.000")
-    private int costMin;
+    private Integer costMin;
 
     @Schema(example = "5.000.000.00", description = "Цена недвижимости")
     @Positive(message = "Цена недвижимости должна быть больше нуля")
     @Digits(integer = 9, fraction = 2, message = "Указана неверная цена недвижимости")
     @Min(value = 350_000, message = "Цена недвижимости не может быть меньше 350.000")
     @Max(value = 1_000_000_000, message = "Цена недвижимости не может быть больше 1.000.000.000")
-    private int costMax;
+    private Integer costMax;
 
     @Schema(example = "3", description = "Цена недвижимости")
     private String countFlat;
 
-    private int floorMin;
-    private int floorMax;
-    private int limit;
+    private Integer floorMin;
+    private Integer floorMax;
+    private Integer limit;
 
     public SecureRealEstateRequest() {
     }
@@ -54,51 +54,51 @@ public class SecureRealEstateRequest {
         this.limit = limit;
     }
 
-    public int getCostMin() {
+    public Integer getCostMin() {
         return costMin;
     }
 
-    public int getCostMax() {
+    public void setCostMin(Integer costMin) {
+        this.costMin = costMin;
+    }
+
+    public Integer getCostMax() {
         return costMax;
+    }
+
+    public void setCostMax(Integer costMax) {
+        this.costMax = costMax;
     }
 
     public String getCountFlat() {
         return countFlat;
     }
 
-    public int getFloorMin() {
-        return floorMin;
-    }
-
-    public int getFloorMax() {
-        return floorMax;
-    }
-
-    public int getLimit() {
-        return limit;
-    }
-
-    public void setCostMin(int costMin) {
-        this.costMin = costMin;
-    }
-
-    public void setCostMax(int costMax) {
-        this.costMax = costMax;
-    }
-
     public void setCountFlat(String countFlat) {
         this.countFlat = countFlat;
     }
 
-    public void setFloorMin(int floorMin) {
+    public Integer getFloorMin() {
+        return floorMin;
+    }
+
+    public void setFloorMin(Integer floorMin) {
         this.floorMin = floorMin;
     }
 
-    public void setFloorMax(int floorMax) {
+    public Integer getFloorMax() {
+        return floorMax;
+    }
+
+    public void setFloorMax(Integer floorMax) {
         this.floorMax = floorMax;
     }
 
-    public void setLimit(int limit) {
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
         this.limit = limit;
     }
 }

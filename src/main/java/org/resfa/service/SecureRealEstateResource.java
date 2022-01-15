@@ -2,7 +2,7 @@ package org.resfa.service;
 
 
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
-import org.resfa.exception.SecureRealEstateRequest;
+import org.resfa.request.SecureRealEstateRequest;
 import org.resfa.pojo.District;
 import org.resfa.pojo.ParserResponse;
 
@@ -28,7 +28,7 @@ public class SecureRealEstateResource {
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     public Response getAllEstate() throws IOException {
-        List<String> result = Arrays.stream(District.values()).map(x -> x.getFileName() + " район").collect(Collectors.toList());
+        /*List<String> result = Arrays.stream(District.values()).map(x -> x.getFileName() + " район").collect(Collectors.toList());
         List<ParserResponse> collect = Arrays.stream(District.values())
                 .map(x -> inparseService.getData(x))
                 .collect(Collectors.toList());
@@ -37,7 +37,8 @@ public class SecureRealEstateResource {
             result.add(place, collect.get(i).data.toString());
             place = place + 1 + i;
         }
-        return Response.ok().type("application/json").entity(collect).build();
+        return Response.ok().type("application/json").entity(collect).build();*/
+        return null;
     }
 
     @Path("/districts")
@@ -56,7 +57,7 @@ public class SecureRealEstateResource {
                 .filter(x -> x.getNumber() == Integer.parseInt(id))
                 .findFirst()
                 .orElseThrow();
-        ParserResponse data = inparseService.getData(district);
+        ParserResponse data = inparseService.optionalRequest(request,district);
         return Response.ok().type("application/json").entity(data.data).build();
     }
 
