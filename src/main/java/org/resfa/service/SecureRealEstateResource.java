@@ -15,24 +15,37 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-@Path("/api")
+@Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public class SecureRealEstateResource {
     @Inject
-    public GetData getData;
+    public Inparse inparse;
 
-
-    @Path("/{id}")
+    @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
-    public Response getAllEstate(@PathParam String id) throws IOException {
-        District district = Arrays.stream(District.values())
-                .filter(x -> x.getNumber() == Integer.parseInt(id))
-                .findFirst()
-                .orElseThrow();
-        ParserResponse data = getData.getData(district);
-        return Response.ok().type("application/json").entity(data.data).build();
+    public Response getAllEstate() throws IOException {
+        List<String> result = Arrays.stream(District.values()).map(x -> x.getFileName() + " район").collect(Collectors.toList());
+        List<ParserResponse> collect = Arrays.stream(District.values())
+                .map(x -> inparse.getData(x))
+                .collect(Collectors.toList());
+        int place = 1;
+        for (int i = 0; i < collect.size(); i++) {
+            result.add(place, collect.get(i).data.toString());
+            place = place + 1 + i;
+        }
+        return Response.ok().type("application/json").entity(collect).build();
+    }
+
+    @Path("/districts")
+    @Produces(MediaType.APPLICATION_JSON)
+    @GET
+    public Response getDistricts() throws IOException {
+        List<String> collect = Arrays.stream(District.values()).map(x -> x.getNumber() + " - " + x.getName()).collect(Collectors.toList());
+        return Response.ok().type("application/json").entity(collect).build();
     }
 
     @POST
@@ -42,8 +55,8 @@ public class SecureRealEstateResource {
         District district = Arrays.stream(District.values())
                 .filter(x -> x.getNumber() == Integer.parseInt(id))
                 .findFirst()
-                .orElseThrow(() -> new Exception("Некорректный id района!"));
-        ParserResponse data = getData.getData(district);
+                .orElseThrow();
+        ParserResponse data = inparse.getData(district);
         return Response.ok().type("application/json").entity(data.data).build();
     }
 

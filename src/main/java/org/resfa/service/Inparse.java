@@ -11,20 +11,28 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 
 @ApplicationScoped
-public class GetData {
-    public ParserResponse getData(District district) throws IOException {
-        GetData getData = new GetData();
-        Path path = Paths.get(String.format("src/main/resources/polygons/%s", district.getName()));
-        BufferedReader reader = Files.newBufferedReader(path);
+public class Inparse {
+    public ParserResponse getData(District district) {
+        Inparse getData = new Inparse();
+        try {
+        Path path = Paths.get(String.format("src/main/resources/polygons/%s", district.getFileName()));
+        BufferedReader reader = null;
+
+            reader = Files.newBufferedReader(path);
+
         String line = reader.readLine();
         Response response = getData.polygonRequest(line);
-        String string = response.body().string();
+        String string = Objects.requireNonNull(response.body()).string();
         Gson gson = new Gson();
-        ParserResponse parserResponse = gson.fromJson(string, ParserResponse.class);
-        return parserResponse;
+            return gson.fromJson(string, ParserResponse.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public Response polygonRequest(String polygon) throws IOException {
