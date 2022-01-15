@@ -15,9 +15,9 @@ import java.util.Objects;
 
 
 @ApplicationScoped
-public class Inparse {
+public class InparseService {
     public ParserResponse getData(District district) {
-        Inparse getData = new Inparse();
+        InparseService getData = new InparseService();
         try {
         Path path = Paths.get(String.format("src/main/resources/polygons/%s", district.getFileName()));
         BufferedReader reader = null;

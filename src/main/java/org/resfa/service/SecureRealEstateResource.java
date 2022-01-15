@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Produces(MediaType.APPLICATION_JSON)
 public class SecureRealEstateResource {
     @Inject
-    public Inparse inparse;
+    public InparseService inparseService;
 
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
@@ -30,7 +30,7 @@ public class SecureRealEstateResource {
     public Response getAllEstate() throws IOException {
         List<String> result = Arrays.stream(District.values()).map(x -> x.getFileName() + " район").collect(Collectors.toList());
         List<ParserResponse> collect = Arrays.stream(District.values())
-                .map(x -> inparse.getData(x))
+                .map(x -> inparseService.getData(x))
                 .collect(Collectors.toList());
         int place = 1;
         for (int i = 0; i < collect.size(); i++) {
@@ -56,7 +56,7 @@ public class SecureRealEstateResource {
                 .filter(x -> x.getNumber() == Integer.parseInt(id))
                 .findFirst()
                 .orElseThrow();
-        ParserResponse data = inparse.getData(district);
+        ParserResponse data = inparseService.getData(district);
         return Response.ok().type("application/json").entity(data.data).build();
     }
 
