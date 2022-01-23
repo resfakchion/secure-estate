@@ -85,7 +85,7 @@ public class InparseService {
             formBody.add("floorMax", String.valueOf(realEstateRequest.getFloorMax()));
         }
         if (realEstateRequest.getCountFlat() != null) {
-            formBody.add("countFlat", String.valueOf(realEstateRequest.getCountFlat()));
+            formBody.add("categoryId", String.valueOf(realEstateRequest.getCountFlat()));
         }
         if (realEstateRequest.getLimit() != null) {
             formBody.add("limit", String.valueOf(realEstateRequest.getLimit()));

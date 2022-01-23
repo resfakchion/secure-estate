@@ -1,7 +1,10 @@
 package org.resfa.service;
 
+import org.resfa.pojo.District;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataInput;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -17,12 +20,20 @@ public class Service {
 
     public static void main(String[] args) throws IOException {
         Service service = new Service();
-        List<String> districts = service.getDistricts();
-        for (String district : districts) {
-            var polygon = service.getPolygon(district);
-            polygon = service.sizeReduction(polygon);
-            service.writeCoordinates(polygon, district);
+        String district = District.Vyborgsky.getFileName();
+        var polygon = service.getPolygon(district);
+        polygon = service.switchCoords(polygon);
+    //    polygon = service.sizeReduction(polygon);
+        service.writeCoordinates(polygon, district);
+    }
+
+    public List<String> switchCoords(List<String> polygons) {
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < polygons.size() - 1; i = i + 2) {
+            result.add(polygons.get(i + 1));
+            result.add(polygons.get(i));
         }
+        return result;
     }
 
     public List<String> getPolygon(String pathName) throws IOException {
