@@ -58,6 +58,190 @@ public class RealEstate {
         this.updated = updated;
     }
 
+    public Double getId() {
+        return id;
+    }
+
+    public void setId(Double id) {
+        this.id = id;
+    }
+
+    public Double getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(Double regionId) {
+        this.regionId = regionId;
+    }
+
+    public Double getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(Double cityId) {
+        this.cityId = cityId;
+    }
+
+    public Double getTypeAd() {
+        return typeAd;
+    }
+
+    public void setTypeAd(Double typeAd) {
+        this.typeAd = typeAd;
+    }
+
+    public Double getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(Double sectionId) {
+        this.sectionId = sectionId;
+    }
+
+    public Double getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Double categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Integer getFloor() {
+        return floor;
+    }
+
+    public void setFloor(Integer floor) {
+        this.floor = floor;
+    }
+
+    public Double getSq() {
+        return sq;
+    }
+
+    public void setSq(Double sq) {
+        this.sq = sq;
+    }
+
+    public Double getSqLand() {
+        return sqLand;
+    }
+
+    public void setSqLand(Double sqLand) {
+        this.sqLand = sqLand;
+    }
+
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public ArrayList<String> getImages() {
+        return images;
+    }
+
+    public void setImages(ArrayList<String> images) {
+        this.images = images;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<String> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(ArrayList<String> phones) {
+        this.phones = phones;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Double getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Double agent) {
+        this.agent = agent;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
+    }
+
     @Override
     public String toString() {
         return "RealEstate{" +

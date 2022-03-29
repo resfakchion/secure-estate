@@ -2,39 +2,47 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Быстрый старт. Размещение интерактивной карты на странице</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=c785ac7c-4fe3-4a0e-973a-43b96ec1e3a3&lang=ru_RU" type="text/javascript">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=c785ac7c-4fe3-4a0e-973a-43b96ec1e3a3&lang=ru_RU"
+            type="text/javascript">
+        <link rel="stylesheet" type="text/css" href="https://yastatic.net/bootstrap/3.3.4/css/bootstrap.min.css">
     </script>
     <script type="text/javascript">
         ymaps.ready(init);
-        function init(){
+
+        function init() {
             var myMap = new ymaps.Map("map", {
                 center: [59.93, 30.33],
                 zoom: 11
             });
             // Создаем кластер.
             var clusterer = new ymaps.Clusterer({});
-
-            var myPlacemark1 = new ymaps.Placemark([59.931, 30.341], {
-                // Задаем содержимое балуна метки.
-                // Это содержимое будет отображаться при клике по кластеру.
-                balloonContentHeader: 'Метка № 1',
-                balloonContentBody: 'Не мысля гордый свет забавить,</br>' +
-                    'Вниманье дружбы возлюбя,</br>' +
-                    'Хотел бы я тебе представить</br>' +
-                    'Залог достойнее тебя,'
-            });
-            clusterer.add(myPlacemark1);
-            var myPlacemark2 = new ymaps.Placemark([59.958, 30.342], {
-                // Задаем содержимое балуна метки.
-                // Это содержимое будет отображаться при клике по кластеру.
-                balloonContentHeader: 'Метка № 1',
-                balloonContentBody: 'Не мысля гордый свет забавить,</br>' +
-                    'Вниманье дружбы возлюбя,</br>' +
-                    'Хотел бы я тебе представить</br>' +
-                    'Залог достойнее тебя,'
-            });
-            clusterer.add(myPlacemark2);
+            // Создаём точки
+            {#for realEstate in realEstates}
+            var placemark_{realEstate.name} = new ymaps.Placemark([{realEstate.lat}, {realEstate.lng}], {
+                    balloonContent:
+                        'Название:  ' + '{realEstate.title}</br>' +
+                        'Цена:  ' + '{realEstate.title}</br>' +
+                        'Площадь:   ' + '{realEstate.title}</br>' +
+                        'Этаж:  ' + '{realEstate.title}</br>' +
+                        'Адрес: ' + '{realEstate.title}</br>' +
+                        'Ссылка на объявление:   ' + '{realEstate.title}</br>' +
+                        'Фото: </br>'
+                        {#for image in realEstate.images}
+                        + '<img src="{image}" /> </br>'
+                        {/for}
+                    ,
+                    iconContent: "Питер"
+                }
+                , {
+                    preset: "islands#yellowStretchyIcon",
+                    // Отключаем кнопку закрытия балуна.
+                    balloonCloseButton: false,
+                    // Балун будем открывать и закрывать кликом по иконке метки.
+                    hideIconOnBalloonOpen: false
+                });
+            clusterer.add(placemark_{realEstate.name});
+            {/for}
             myMap.geoObjects.add(clusterer);
         }
     </script>

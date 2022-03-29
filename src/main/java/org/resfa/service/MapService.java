@@ -1,13 +1,13 @@
 package org.resfa.service;
 
 
-
 import io.quarkus.qute.Location;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
+import org.resfa.pojo.RealEstate;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
+import java.util.ArrayList;
 
 @ApplicationScoped
 public class MapService {
@@ -15,13 +15,9 @@ public class MapService {
     @Location("map_template.html")
     private Template template;
 
+    public TemplateInstance createMap(ArrayList<RealEstate> realEstates) {
+        return template.data("realEstates", realEstates);
 
-    public void sendLetterForInsurer() {
-        /*TemplateInstance templateInstance = template.data("message", worker.textMessage);
-        sendSimpleEmailRequest.setEmailHtml(templateInstance.render());
-        sendSimpleEmailRequest.setEmailSubject("Информация о платеже");
-        sendSimpleEmailRequest.setRecipientEmail(recipientEmail);
-        coreMailerService.sendSimpleHtmlEmail(sendSimpleEmailRequest);*/
     }
 
 }

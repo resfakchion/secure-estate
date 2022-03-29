@@ -1,9 +1,11 @@
 package org.resfa.service;
 
 
+import io.quarkus.qute.TemplateInstance;
 import org.jboss.resteasy.annotations.jaxrs.PathParam;
 import org.resfa.pojo.District;
 import org.resfa.pojo.ParserResponse;
+import org.resfa.pojo.RealEstate;
 import org.resfa.request.SecureRealEstateRequest;
 
 import javax.inject.Inject;
@@ -24,6 +26,9 @@ import java.util.stream.Collectors;
 public class SecureRealEstateResource {
     @Inject
     public InparseService inparseService;
+
+    @Inject
+    MapService mapService;
 
     @Path("/filter/all")
     @Produces(MediaType.APPLICATION_JSON)
@@ -78,6 +83,25 @@ public class SecureRealEstateResource {
                 .orElseThrow();
         ParserResponse data = inparseService.getData(district);
         return Response.ok().type("application/json").entity(data.data).build();
+    }
+
+    @GET
+    @Path("/test")
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance testMap() throws Exception {
+        RealEstate estate = new RealEstate();
+        estate.setName("1");
+        estate.setLat("59.931");
+        estate.setLng("30.331");
+        estate.setTitle("Первая точка");
+        ArrayList<String> images = new ArrayList<>();
+        images.add("http://img-fotki.yandex.ru/get/6114/82599242.2d6/0_88b97_ec425cf5_M");
+        images.add("http://img-fotki.yandex.ru/get/6114/82599242.2d6/0_88b97_ec425cf5_M");
+        images.add("http://img-fotki.yandex.ru/get/6114/82599242.2d6/0_88b97_ec425cf5_M");
+        estate.setImages(images);
+        ArrayList<RealEstate> estates = new ArrayList<>();
+        estates.add(estate);
+        return mapService.createMap(estates);
     }
 
 }
