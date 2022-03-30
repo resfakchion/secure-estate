@@ -104,4 +104,14 @@ public class SecureRealEstateResource {
         return mapService.createMap(estates);
     }
 
+    @GET
+    @Path("/")
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance mainPage() throws Exception {
+        return mapService.mainPage();
+    }
+
+
+
+
 }

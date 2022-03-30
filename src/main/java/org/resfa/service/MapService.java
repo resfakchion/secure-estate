@@ -13,10 +13,17 @@ import java.util.ArrayList;
 public class MapService {
 
     @Location("map_template.html")
-    private Template template;
+    private Template yandexMapTemplate;
+
+    @Location("main_template.html")
+    private Template mainTemplate;
 
     public TemplateInstance createMap(ArrayList<RealEstate> realEstates) {
-        return template.data("realEstates", realEstates);
+        return yandexMapTemplate.data("realEstates", realEstates);
+    }
+
+    public TemplateInstance mainPage() {
+        return mainTemplate.instance();
 
     }
 

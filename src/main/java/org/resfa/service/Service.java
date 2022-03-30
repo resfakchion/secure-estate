@@ -18,15 +18,6 @@ import java.util.stream.Collectors;
 
 public class Service {
 
-    public static void main(String[] args) throws IOException {
-        Service service = new Service();
-        String district = District.Vyborgsky.getFileName();
-        var polygon = service.getPolygon(district);
-        polygon = service.switchCoords(polygon);
-    //    polygon = service.sizeReduction(polygon);
-        service.writeCoordinates(polygon, district);
-    }
-
     public List<String> switchCoords(List<String> polygons) {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < polygons.size() - 1; i = i + 2) {
