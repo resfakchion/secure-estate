@@ -1,0 +1,115 @@
+.str3 {
+    stroke: #A1C2E6;
+    stroke-width: 0.0762
+}
+
+.str2 {
+    stroke: #A1C2E6;
+    stroke-width: 0.5;
+}
+
+.str4 {
+    stroke: #998476;
+    stroke-width: 0.0762
+}
+
+.str1 {
+    stroke: #E6B073;
+    stroke-width: 0.0762
+}
+
+.str0 {
+    stroke: #D1A068;
+    stroke-width: 0.25
+}
+
+.str5 {
+    stroke: #5C4F47;
+    stroke-width: 0.5
+}
+
+.str6 {
+    stroke: #998476;
+    stroke-width: 0.5
+}
+
+.str7 {
+    stroke: #543E1D;
+    stroke-width: 3
+}
+
+
+.fil0 {
+    fill: #FFFADE
+}
+
+.fil1 {
+    fill: #B4B7BA
+}
+
+.fil2 {
+    fill: #FFC68C
+}
+
+.fil3 {
+    fill: #CCE5FF
+}
+
+.fil4 {
+    fill: none
+}
+
+.fil5 {
+    fill: #FFCC99
+}
+
+.fil6 {
+    fill: #F2AD79
+}
+
+.fil7 {
+    fill: #543E1D;
+    fill-rule: nonzero
+}
+
+.fil_red {
+    fill: #EA3030;
+    opacity: .8;
+}
+.fil_red:hover {
+    transition: opacity .2s ease;
+    opacity: 1;
+}
+
+.fil_yellow {
+    fill: #eff818;
+    opacity: .8;
+}
+.fil_yellow:hover {
+    transition: opacity .2s ease;
+    opacity: 1;
+}
+
+.fil_green {
+    fill: #58B43B;
+    opacity: .8;
+}
+.fil_green:hover {
+    transition: opacity .2s ease;
+    opacity: 1;
+}
+
+.description {
+    position: absolute;
+    padding-right: 300px;
+    box-sizing: border-box;
+    width: 300px;
+    height: 400px;
+    box-shadow: 0 0 32px 10px #ccc;
+}
+.map {
+    position: relative;
+    text-align: center;
+}
+
+

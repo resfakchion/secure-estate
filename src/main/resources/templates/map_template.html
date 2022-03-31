@@ -5,7 +5,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=c785ac7c-4fe3-4a0e-973a-43b96ec1e3a3&lang=ru_RU"
             type="text/javascript">
-        <link rel="stylesheet" type="text/css" href="https://yastatic.net/bootstrap/3.3.4/css/bootstrap.min.css">
     </script>
     <script type="text/javascript">
         ymaps.ready(init);
@@ -21,13 +20,13 @@
             {#for realEstate in realEstates}
             var placemark_{realEstate.name} = new ymaps.Placemark([{realEstate.lat}, {realEstate.lng}], {
                     balloonContent:
-                        'Название:  ' + '{realEstate.title}</br>' +
-                        'Цена:  ' + '{realEstate.title}</br>' +
-                        'Площадь:   ' + '{realEstate.title}</br>' +
-                        'Этаж:  ' + '{realEstate.title}</br>' +
-                        'Адрес: ' + '{realEstate.title}</br>' +
-                        'Ссылка на объявление:   ' + '{realEstate.title}</br>' +
-                        'Фото: </br>'
+                        '<b><i> Название: </i></b>  ' + '{realEstate.title}</br>' +
+                        '<b><i>Цена: </i></b> ' + '{realEstate.title}</br>' +
+                        '<b><i>Площадь</i></b>:   ' + '{realEstate.title}</br>' +
+                        '<b><i>Этаж</i></b>:  ' + '{realEstate.title}</br>' +
+                        '<b><i>Адрес:</i></b> ' + '{realEstate.title}</br>' +
+                        '<b><i>Ссылка на объявление</i></b>:   ' + '{realEstate.title}</br>' +
+                        '<b><i>Фото:</i></b> </br>'
                         {#for image in realEstate.images}
                         + '<img src="{image}" /> </br>'
                         {/for}
@@ -37,9 +36,9 @@
                 , {
                     preset: "islands#yellowStretchyIcon",
                     // Отключаем кнопку закрытия балуна.
-                    balloonCloseButton: false,
+                    balloonCloseButton: true,
                     // Балун будем открывать и закрывать кликом по иконке метки.
-                    hideIconOnBalloonOpen: false
+                    hideIconOnBalloonOpen: true
                 });
             clusterer.add(placemark_{realEstate.name});
             {/for}

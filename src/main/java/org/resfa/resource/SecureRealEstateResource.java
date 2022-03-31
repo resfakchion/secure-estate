@@ -1,4 +1,4 @@
-package org.resfa.service;
+package org.resfa.resource;
 
 
 import io.quarkus.qute.TemplateInstance;
@@ -7,6 +7,8 @@ import org.resfa.pojo.District;
 import org.resfa.pojo.ParserResponse;
 import org.resfa.pojo.RealEstate;
 import org.resfa.request.SecureRealEstateRequest;
+import org.resfa.service.InparseService;
+import org.resfa.service.MapService;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
