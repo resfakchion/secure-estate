@@ -1,0 +1,43 @@
+body {margin: 0; padding: 0;}
+
+.map {
+	position: relative;
+	text-align: center;
+	margin-bottom: 1000px;
+}
+
+svg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 1000px;
+	width: 1000px;
+}
+
+.part {
+	opacity: .7;
+}
+
+.part:hover {
+	transition: opacity .2s ease;
+	opacity: .9;
+}
+
+
+.description {
+	display: none;
+	position: absolute;
+	padding: 20px;
+	box-sizing: border-box;
+	width: 300px;
+	height: 400px;
+	box-shadow: 0 0 32px 10px #ccc;
+	left: 50px;
+	bottom: calc(50% - 200px);
+	font-family: sans-serif;
+}
+
+.description img {
+	width: 250px;
+	margin-bottom: 20px;
+}

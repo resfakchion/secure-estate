@@ -75,7 +75,7 @@ public class SecureRealEstateResource {
     }
 
     @GET
-    @Path("/district//{id}")
+    @Path("/district/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getOptionalEstate(@PathParam String id) throws Exception {
