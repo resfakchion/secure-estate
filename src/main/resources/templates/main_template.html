@@ -146,8 +146,8 @@
                 </div>
             </div> <!-- end section-header -->
             <div class="col-block service-item" data-aos="fade-up">
-                <div>
-                    <button v-on:click="changeYear">Change year</button>
+                <div style="display: flex; flex-direction: column;">
+                    <button v-on:click="changeYear" style="width: 300px;">Change year</button>
                     <div class="map" >
                         <svg xml:space="preserve" width="50%" height="50%" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 1010 970" version="1.1" id="svg1295" sodipodi:docname="districts_map.svg" inkscape:version="1.1.2 (b8e25be833, 2022-02-05)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview id="namedview1297" pagecolor="#505050" bordercolor="#eeeeee" borderopacity="1" inkscape:pageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0" inkscape:document-units="mm" showgrid="false" inkscape:zoom="0.22039519" inkscape:cx="728.23731" inkscape:cy="2037.2496" inkscape:window-width="1920" inkscape:window-height="1017" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="Numbers" />
@@ -749,7 +749,9 @@
                     </div>
 
                 </div>
-
+                <div class="min_price">
+                    <input type="text">
+                </div>
 
             </div> <!-- end services-list -->
         </div>
