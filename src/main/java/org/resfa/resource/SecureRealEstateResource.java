@@ -64,10 +64,10 @@ public class SecureRealEstateResource {
     @POST
     @Path("/district/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getOptionalEstate(@PathParam String id, SecureRealEstateRequest request) throws Exception {
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response getOptionalEstate(SecureRealEstateRequest request) throws Exception {
         District district = Arrays.stream(District.values())
-                .filter(x -> x.getNumber() == Integer.parseInt(id))
+                .filter(x -> x.getNumber() == Integer.parseInt("1"))
                 .findFirst()
                 .orElseThrow();
         ParserResponse data = inparseService.optionalRequest(request, district);
