@@ -18,29 +18,35 @@
             var clusterer = new ymaps.Clusterer({});
             // Создаём точки
             {#for realEstate in realEstates}
-            var placemark_{realEstate.name} = new ymaps.Placemark([{realEstate.lat}, {realEstate.lng}], {
+            var placemark_{realEstate.id} = new ymaps.Placemark([{realEstate.lat}, {realEstate.lng}], {
                     balloonContent:
                         '<b><i> Название: </i></b>  ' + '{realEstate.title}</br>' +
-                        '<b><i>Цена: </i></b> ' + '{realEstate.title}</br>' +
-                        '<b><i>Площадь</i></b>:   ' + '{realEstate.title}</br>' +
-                        '<b><i>Этаж</i></b>:  ' + '{realEstate.title}</br>' +
-                        '<b><i>Адрес:</i></b> ' + '{realEstate.title}</br>' +
-                        '<b><i>Ссылка на объявление</i></b>:   ' + '{realEstate.title}</br>' +
+                        '<b><i>Цена: </i></b> ' + '{realEstate.cost}</br>' +
+                        '<b><i>Площадь</i></b>:   ' + '{realEstate.sqLand}</br>' +
+                        '<b><i>Этаж</i></b>:  ' + '{realEstate.floor}</br>' +
+                        '<b><i>Адрес:</i></b> ' + '{realEstate.address}</br>' +
+                        '<b><i>Описание:</i></b> ' + '{realEstate.text}</br>' +
+                        '<b><i>Номер телефона:</i></b> ' +
+                        {#if realEstate.phones}
+                        {#for phone in realEstate.phones}
+                        + '{phone} '
+                        {/for}
+                        {/if}
+                            + '</br>' +
+                        '<b><i>Имя:</i></b> ' + '{realEstate.name}</br>' +
+                        '<b><i>Ссылка на объявление</i></b>:   ' + '<a href="{realEstate.url}">Ссылка</a></br>' +
                         '<b><i>Фото:</i></b> </br>'
-                        {#for image in realEstate.images}
+                            {#for image in realEstate.images}
                         + '<img src="{image}" /> </br>'
                         {/for}
                     ,
-                    iconContent: "Питер"
                 }
                 , {
-                    preset: "islands#yellowStretchyIcon",
-                    // Отключаем кнопку закрытия балуна.
+                    preset: "islands#blueHomeIcon",
                     balloonCloseButton: true,
-                    // Балун будем открывать и закрывать кликом по иконке метки.
                     hideIconOnBalloonOpen: true
                 });
-            clusterer.add(placemark_{realEstate.name});
+            clusterer.add(placemark_{realEstate.id});
             {/for}
             myMap.geoObjects.add(clusterer);
         }

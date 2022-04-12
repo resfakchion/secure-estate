@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class RealEstate {
-    public Double id;
+    public String id;
     public Double regionId;
     public Double cityId;
     public Double typeAd;
@@ -32,7 +32,7 @@ public class RealEstate {
     public RealEstate() {
     }
 
-    public RealEstate(Double id, Double regionId, Double cityId, Double typeAd, Double sectionId, Double categoryId, String title, String address, Integer floor, Double sq, Double sqLand, BigDecimal cost, String text, ArrayList<String> images, String lat, String lng, String name, ArrayList<String> phones, String url, Double agent, String source, Date created, Date updated) {
+    public RealEstate(String id, Double regionId, Double cityId, Double typeAd, Double sectionId, Double categoryId, String title, String address, Integer floor, Double sq, Double sqLand, BigDecimal cost, String text, ArrayList<String> images, String lat, String lng, String name, ArrayList<String> phones, String url, Double agent, String source, Date created, Date updated) {
         this.id = id;
         this.regionId = regionId;
         this.cityId = cityId;
@@ -58,11 +58,11 @@ public class RealEstate {
         this.updated = updated;
     }
 
-    public Double getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Double id) {
+    public void setId(String id) {
         this.id = id;
     }
 
