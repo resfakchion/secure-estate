@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.Objects;
 
 
@@ -26,8 +27,12 @@ public class InparseService {
         return gson.fromJson(string, ParserResponse.class);
     }
 
-    public ParserResponse optionalRequest(SecureRealEstateRequest request, District district) throws IOException {
+    public ParserResponse optionalRequest(SecureRealEstateRequest request) throws IOException {
         InparseService getData = new InparseService();
+        District district = Arrays.stream(District.values())
+                .filter(x -> x.getNumber() == request.getDistrict())
+                .findFirst()
+                .orElseThrow();
         Response response = getData.optionalPolygonRequest(request,getPolygon(district));
         String string = Objects.requireNonNull(response.body()).string();
         Gson gson = new Gson();
