@@ -36,7 +36,6 @@
     <script src="js/pace.min.js"></script>
     <script src="js/table.js"></script>
     <script src="js/form.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
     <!-- favicons
     ================================================== -->
@@ -1315,27 +1314,25 @@
                     <div class="min_price">
                         <div class="col-six tab-full">
                             <h3>Выбор недвижимости</h3>
-                            <form action="/district/1" enctype="multipart/form-data" method="post">
+                            <form>
                                 <div>
                                     <label for="sampleInput">Минимальная стоимость</label>
-                                    <input class="full-width" type="text" name="costMin"
-                                           placeholder="Минимальная стоимость" id="sampleInput">
+                                    <input class="full-width" type="number" id="costMin"
+                                           placeholder="Минимальная стоимость">
                                     <label for="sampleInput">Максимальная стоимость</label>
-                                    <input class="full-width" type="text" name="costMax"
-                                           placeholder="Максимальная стоимость" id="sampleInput">
+                                    <input class="full-width" type="number" id="costMax"
+                                           placeholder="Максимальная стоимость">
                                 </div>
                                 <div>
                                     <label for="sampleInput">Минимальный этаж</label>
-                                    <input class="full-width" type="text" name="floorMin" placeholder="Минимальный этаж"
-                                           id="sampleInput">
+                                    <input class="full-width" type="number" id="floorMin" placeholder="Минимальный этаж">
                                     <label for="sampleInput">Максимальный этаж</label>
-                                    <input class="full-width" type="text" name="floorMax"
-                                           placeholder="Максимальный этаж" id="sampleInput">
+                                    <input class="full-width" type="number" id="floorMax" placeholder="Максимальный этаж">
                                 </div>
                                 <div>
                                     <label for="sampleRecipientInput">Район города</label>
                                     <div class="cl-custom-select">
-                                        <select class="full-width" name="district" id="sampleRecipientInput">
+                                        <select class="full-width" name="district" id="district">
                                             <option value="1">Адмиралтейский</option>
                                             <option value="2">Цетральный</option>
                                             <option value="3">Фрунзенский</option>
@@ -1371,7 +1368,7 @@
                                     </label>
                                 </div>
 
-                                <input class="btn--primary" type="submit" value="Submit">
+                                <input id="btn" class="btn--primary" type="submit" value="Submit">
 
                             </form>
 
@@ -1623,8 +1620,6 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/main.js"></script>
-<script src="js/map.js"></script>
-
 
 </body>
 

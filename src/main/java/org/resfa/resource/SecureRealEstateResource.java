@@ -64,7 +64,7 @@ public class SecureRealEstateResource {
     @POST
     @Path("/district/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response getOptionalEstate(SecureRealEstateRequest request) throws Exception {
         District district = Arrays.stream(District.values())
                 .filter(x -> x.getNumber() == Integer.parseInt("1"))
@@ -87,10 +87,11 @@ public class SecureRealEstateResource {
         return Response.ok().type("application/json").entity(data.data).build();
     }
 
-    @GET
-    @Path("/test")
+    @POST
+    @Path("/district")
     @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance testMap() throws Exception {
+    @Consumes(MediaType.APPLICATION_JSON)
+    public TemplateInstance testMap(SecureRealEstateRequest request) throws Exception {
         RealEstate estate = new RealEstate();
         estate.setId("1");
         estate.setName("1");
@@ -119,7 +120,7 @@ public class SecureRealEstateResource {
         estate2.setSqLand(49.2);
         estate2.setUrl("https://spb.domclick.ru/card/sale__flat__1436517577");
         ArrayList<RealEstate> estates = new ArrayList<>();
-       estates.add(estate2);
+        estates.add(estate2);
         estates.add(estate);
         return mapService.createMap(estates);
     }
@@ -131,7 +132,41 @@ public class SecureRealEstateResource {
         return mapService.mainPage();
     }
 
-
-
+    @GET
+    @Path("/district")
+    @Produces(MediaType.TEXT_HTML)
+    public TemplateInstance test() throws Exception {
+        RealEstate estate = new RealEstate();
+        estate.setId("1");
+        estate.setName("1");
+        estate.setLat("59.931");
+        estate.setLng("30.331");
+        estate.setTitle("Первая точка");
+        ArrayList<String> images = new ArrayList<>();
+        images.add("https://22.img.avito.st/640x480/8845088222.jpg");
+        images.add("https://63.img.avito.st/640x480/8845089163.jpg");
+        images.add("https://31.img.avito.st/640x480/8845089631.jpg");
+        estate.setImages(images);
+        RealEstate estate2 = new RealEstate();
+        estate2.setId("2");
+        estate2.setTitle("2-к квартира, 55 м²");
+        estate2.setFloor(3);
+        estate2.setAddress("Санкт-Петербург, Садовая улица дом 28");
+        estate2.setLat("59.93026542043342");
+        estate2.setLng("30.326776285506025");
+        estate2.setText("Арт. 48210565 Срочная продажа квартиры в центре Петербурга. Рядом 5 станций метро. Только наличные средства. Тихий двор. Есть место для парковки во дворе. Квартира правильной прямоугольной формы. Нет несущих стен внутри квартиры - можете делать ремонт с любой перепланировкой под себя. Высота потолков - 3,2 м. Остались вопросы? - звоните, расскажу подробнее.");
+        estate2.setImages(images);
+        estate2.setName("Александр");
+        estate2.setCost(BigDecimal.valueOf(14000000));
+        ArrayList<String> phones = new ArrayList<>();
+        phones.add("+79101513151");
+        estate2.setPhones(phones);
+        estate2.setSqLand(49.2);
+        estate2.setUrl("https://spb.domclick.ru/card/sale__flat__1436517577");
+        ArrayList<RealEstate> estates = new ArrayList<>();
+        estates.add(estate2);
+        estates.add(estate);
+        return mapService.createMap(estates);
+    }
 
 }
