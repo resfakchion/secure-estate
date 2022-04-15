@@ -12,14 +12,20 @@ import java.util.ArrayList;
 @ApplicationScoped
 public class MapService {
 
-    @Location("map_template.html")
+    @Location("yandex_map_template.html")
     private Template yandexMapTemplate;
+
+    @Location("default_map_template.html")
+    private Template defaultMapTemplate;
 
     @Location("main_template.html")
     private Template mainTemplate;
 
     public TemplateInstance createMap(ArrayList<RealEstate> realEstates) {
         return yandexMapTemplate.data("realEstates", realEstates);
+    }
+    public TemplateInstance createDefaultMap() {
+        return defaultMapTemplate.instance();
     }
 
     public TemplateInstance mainPage() {

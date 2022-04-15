@@ -82,7 +82,10 @@ public class SecureRealEstateResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public TemplateInstance testMap(SecureRealEstateRequest request) throws Exception {
         ParserResponse realEstates = inparseService.optionalRequest(request);
-        return mapService.createMap(realEstates.data);
+        if (realEstates.data != null) {
+            return mapService.createMap(realEstates.data);
+        }
+        return mapService.createDefaultMap();
     }
 
     @GET
