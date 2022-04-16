@@ -57,7 +57,7 @@ public class SecureRealEstateResource {
     @Path("/districts")
     @Produces(MediaType.APPLICATION_JSON)
     @GET
-    public Response getDistricts() throws IOException {
+    public Response getDistricts() {
         List<String> collect = Arrays.stream(District.values()).map(x -> x.getNumber() + " - " + x.getName()).collect(Collectors.toList());
         return Response.ok().type("application/json").entity(collect).build();
     }
@@ -91,7 +91,7 @@ public class SecureRealEstateResource {
     @GET
     @Path("/")
     @Produces(MediaType.TEXT_HTML)
-    public TemplateInstance mainPage() throws Exception {
+    public TemplateInstance mainPage() {
         return mapService.mainPage();
     }
 
