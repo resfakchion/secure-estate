@@ -54,7 +54,7 @@ public class InparseService {
     public Response polygonRequest(String polygon) throws IOException {
         OkHttpClient client = new OkHttpClient();
         RequestBody formBody = new FormBody.Builder()
-                .add("cityId", "1,2")
+                .add("cityId", "2")
                 .add("sourceId", "1,2")
                 .add("polygon", polygon)
                 .add("categoryId", "1,2,3,4")
@@ -74,27 +74,27 @@ public class InparseService {
     public Response optionalPolygonRequest(SecureRealEstateRequest realEstateRequest, String polygon) throws IOException {
         OkHttpClient client = new OkHttpClient();
         FormBody.Builder formBody = new FormBody.Builder()
-                .add("cityId", "1,2")
+                .add("cityId", "2")
                 .add("sourceId", "1,2")
                 .add("polygon", polygon);
-        if (realEstateRequest.getCostMin() != null) {
+        if (realEstateRequest.getCostMin() != 0) {
             formBody.add("costMin", String.valueOf(realEstateRequest.getCostMin()));
         }
-        if (realEstateRequest.getCostMax() != null) {
+        if (realEstateRequest.getCostMax() != 0) {
             formBody.add("costMax", String.valueOf(realEstateRequest.getCostMax()));
         }
-        if (realEstateRequest.getFloorMin() != null) {
+        if (realEstateRequest.getFloorMin() != 0) {
             formBody.add("floorMin", String.valueOf(realEstateRequest.getFloorMin()));
         }
-        if (realEstateRequest.getFloorMax() != null) {
+        if (realEstateRequest.getFloorMax() != 0) {
             formBody.add("floorMax", String.valueOf(realEstateRequest.getFloorMax()));
         }
         if (realEstateRequest.getCountFlat() != null) {
             formBody.add("categoryId", String.valueOf(realEstateRequest.getCountFlat()));
         }
-        if (realEstateRequest.getLimit() != null) {
+        /*if (realEstateRequest.getLimit() != 0) {
             formBody.add("limit", String.valueOf(realEstateRequest.getLimit()));
-        }
+        }*/
 
         FormBody post = formBody.build();
 

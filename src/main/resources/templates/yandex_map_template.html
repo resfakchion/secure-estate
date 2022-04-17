@@ -22,23 +22,25 @@
                     balloonContent:
                         '<b><i> Название: </i></b>  ' + '{realEstate.title}</br>' +
                         '<b><i>Цена: </i></b> ' + '{realEstate.cost}</br>' +
-                        '<b><i>Площадь</i></b>:   ' + '{realEstate.sqLand}</br>' +
+                            {#if realEstate.floor != 0}
                         '<b><i>Этаж</i></b>:  ' + '{realEstate.floor}</br>' +
+                            {/if}
                         '<b><i>Адрес:</i></b> ' + '{realEstate.address}</br>' +
                         '<b><i>Описание:</i></b> ' + '{realEstate.text}</br>' +
                         '<b><i>Номер телефона:</i></b> ' +
-                        {#if realEstate.phones}
-                        {#for phone in realEstate.phones}
-                        + '{phone} '
-                        {/for}
-                        {/if}
-                            + '</br>' +
-                        '<b><i>Имя:</i></b> ' + '{realEstate.name}</br>' +
-                        '<b><i>Ссылка на объявление</i></b>:   ' + '<a href="{realEstate.url}">Ссылка</a></br>' +
-                        '<b><i>Фото:</i></b> </br>'
+                            {#if realEstate.phones}
+                            {#for phone in realEstate.phones}
+                        +'{phone} '
+                            {/for}
+                            {/if}
+                        + '</br>' +
+                        '<b><i>Ссылка на объявление</i></b>:   ' + '<a href="{realEstate.url}">Ссылка</a></br>'
+                            {#if realEstate.images}
+                        + '<b><i>Фото:</i></b> </br>'
                             {#for image in realEstate.images}
                         + '<img src="{image}" /> </br>'
                         {/for}
+                        {/if}
                     ,
                 }
                 , {
