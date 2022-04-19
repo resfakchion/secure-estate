@@ -1,10 +1,8 @@
 package org.resfa.service;
 
-import org.resfa.pojo.District;
-
+import javax.enterprise.context.ApplicationScoped;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataInput;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -15,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
+@ApplicationScoped
 public class Service {
 
     public List<String> switchCoords(List<String> polygons) {
@@ -63,6 +61,26 @@ public class Service {
                     .collect(Collectors.toList());
         }
         return strings;
+    }
+
+    public String prepareFlat(String request) {
+        if (request.length() < 1) {
+            return request;
+        }
+        List<Integer> collect = Arrays.stream(request.split("")).map(Integer::parseInt).collect(Collectors.toList());
+        if (collect.contains(1)) {
+            collect.add(28);
+        }
+        if (collect.contains(2)) {
+            collect.add(29);
+        }
+        if (collect.contains(3)) {
+            collect.add(30);
+        }
+        if (collect.contains(4)) {
+            collect.add(31);
+        }
+        return collect.stream().map(x -> "," + x).collect(Collectors.joining()).substring(1);
     }
 
 

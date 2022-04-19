@@ -4,7 +4,7 @@
 <!--[if IE 9 ]>
 <html class="no-js oldie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
-<html class="no-js" lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://java.sun.com/xml/ns/j2ee">
+<html class="no-js" lang="en">
 <!--<![endif]-->
 
 <head>
@@ -155,7 +155,7 @@
                              inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
                              xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
                              xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+                             xmlns="http://www.w3.org/2000/svg">
   <sodipodi:namedview id="namedview1297" pagecolor="#505050" bordercolor="#eeeeee" borderopacity="1"
                       inkscape:pageshadow="0" inkscape:pageopacity="0" inkscape:pagecheckerboard="0"
                       inkscape:document-units="mm" showgrid="false" inkscape:zoom="0.22039519" inkscape:cx="728.23731"
@@ -1309,18 +1309,18 @@
                                 <div>
                                     <label for="sampleInput">Минимальная стоимость</label>
                                     <input class="full-width" type="number" id="costMin"
-                                           placeholder="Минимальная стоимость">
+                                           placeholder="Минимальная стоимость" value="4000000">
                                     <label for="sampleInput">Максимальная стоимость</label>
                                     <input class="full-width" type="number" id="costMax"
-                                           placeholder="Максимальная стоимость">
+                                           placeholder="Максимальная стоимость" value="15000000">
                                 </div>
                                 <div>
                                     <label for="sampleInput">Минимальный этаж</label>
                                     <input class="full-width" type="number" id="floorMin"
-                                           placeholder="Минимальный этаж">
+                                           placeholder="Минимальный этаж" value="3">
                                     <label for="sampleInput">Максимальный этаж</label>
                                     <input class="full-width" type="number" id="floorMax"
-                                           placeholder="Максимальный этаж">
+                                           placeholder="Максимальный этаж" value="10">
                                 </div>
                                 <div>
                                     <label for="sampleRecipientInput">Район города</label>
@@ -1336,7 +1336,7 @@
                                             <option value="8">Красносельский</option>
                                             <option value="9">Кронштадский</option>
                                             <option value="10">Курортный</option>
-                                            <option value="11">Московский</option>
+                                            <option value="11" selected="selected">Московский</option>
                                             <option value="12">Невский</option>
                                             <option value="13">Петродворцовый</option>
                                             <option value="14">Петроградский</option>
@@ -1351,17 +1351,17 @@
                                     <label for="sampleRecipientInput">Количество комнат</label>
                                     <label>
                                         <span class="label-text">1 ком.</span>
-                                        <input type="checkbox" name="countFlat" value="1">
+                                        <input class="check" type="checkbox" id="countFlat_1" value="1">
                                         <span class="label-text">2 ком.</span>
-                                        <input type="checkbox" name="countFlat" value="2">
+                                        <input class="check" type="checkbox" id="countFlat_2" name="countFlat_2" value="2">
                                         <span class="label-text">3 ком.</span>
-                                        <input type="checkbox" name="countFlat" value="3">
+                                        <input class="check" type="checkbox" id="countFlat_3" name="countFlat_3" value="3">
                                         <span class="label-text">4 ком. и более</span>
-                                        <input type="checkbox" name="countFlat" value="4">
+                                        <input class="check" type="checkbox" id="countFlat_4" name="countFlat_4" value="4">
                                     </label>
                                 </div>
 
-                                <input id="btn" class="btn--primary" type="submit" value="Submit">
+                                <input id="btn" class="btn--primary" type="submit" value="Поиск">
 
                             </form>
 
@@ -1373,157 +1373,6 @@
             </div> <!-- end services-list -->
         </div>
     </section> <!-- end s-services -->
-    <section id="clients" class="s-clients">
-        <div style="padding-inline: 100px;">
-            <div class="tbl-header">
-                <table cellpadding="0" cellspacing="0" border="0">
-                    <thead>
-                    <tr>
-                        <th>Район</th>
-                        <th>Население</th>
-                        <th>Кражи</th>
-                        <th>Угоны</th>
-                        <th>Грабежи</th>
-                    </tr>
-                    </thead>
-                </table>
-            </div>
-            <div class="tbl-content">
-                <table cellpadding="0" cellspacing="0" border="0">
-                    <tbody>
-                    <tr>
-                        <td>Адмиралтейский</td>
-                        <td>{{is2020 ? 159.795 : 161.911 }}</td>
-                        <td>{{is2020 ? 133 : 128 }}</td>
-                        <td>{{is2020 ? 16 : 25 }}</td>
-                        <td>{{is2020 ? 34 : 44 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Василеостровский</td>
-                        <td>{{is2020 ? 207.482 : 208.713 }}</td>
-                        <td>{{is2020 ? 116 : 181 }}</td>
-                        <td>{{is2020 ? 18 : 48 }}</td>
-                        <td>{{is2020 ? 11 : 25 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Выборгский</td>
-                        <td>{{is2020 ? 522.746 : 518.709 }}</td>
-                        <td>{{is2020 ? 490 : 758 }}</td>
-                        <td>{{is2020 ? 223 : 426 }}</td>
-                        <td>{{is2020 ? 65 : 63 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Калининский</td>
-                        <td>{{is2020 ? 529.187 : 533.597 }}</td>
-                        <td>{{is2020 ? 670 : 827 }}</td>
-                        <td>{{is2020 ? 214 : 411 }}</td>
-                        <td>{{is2020 ? 48 : 66 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Кировский</td>
-                        <td>{{is2020 ? 336.157 : 336.248 }}</td>
-                        <td>{{is2020 ? 308 : 443 }}</td>
-                        <td>{{is2020 ? 63 : 157 }}</td>
-                        <td>{{is2020 ? 50 : 50 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Колпинский</td>
-                        <td>{{is2020 ? 193.839 : 191.847 }}</td>
-                        <td>{{is2020 ? 74 : 138 }}</td>
-                        <td>{{is2020 ? 28 : 49 }}</td>
-                        <td>{{is2020 ? 14 : 17 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Красногвардейский</td>
-                        <td>{{is2020 ? 356.628 : 357.498 }}</td>
-                        <td>{{is2020 ? 397 : 478 }}</td>
-                        <td>{{is2020 ? 161 : 231 }}</td>
-                        <td>{{is2020 ? 38 : 45 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Красносельский</td>
-                        <td>{{is2020 ? 408.026 : 397.609 }}</td>
-                        <td>{{is2020 ? 412 : 632 }}</td>
-                        <td>{{is2020 ? 178 : 330 }}</td>
-                        <td>{{is2020 ? 38 : 62 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Кронштадский</td>
-                        <td>{{is2020 ? 44.461 : 44.321 }}</td>
-                        <td>{{is2020 ? 10 : 25 }}</td>
-                        <td>{{is2020 ? 2 : 5 }}</td>
-                        <td>{{is2020 ? 3 : 1 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Курортный</td>
-                        <td>{{is2020 ? 79.067 : 78.131 }}</td>
-                        <td>{{is2020 ? 45 : 66 }}</td>
-                        <td>{{is2020 ? 21 : 14 }}</td>
-                        <td>{{is2020 ? 3 : 5 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Московский</td>
-                        <td>{{is2020 ? 352.172 : 354.525 }}</td>
-                        <td>{{is2020 ? 325 : 464 }}</td>
-                        <td>{{is2020 ? 141 : 310 }}</td>
-                        <td>{{is2020 ? 39 : 35 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Невский</td>
-                        <td>{{is2020 ? 536.137 : 527.861 }}</td>
-                        <td>{{is2020 ? 790 : 1123 }}</td>
-                        <td>{{is2020 ? 280: 552 }}</td>
-                        <td>{{is2020 ? 81  : 76 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Петроградский</td>
-                        <td>{{is2020 ? 128.075 : 131.356 }}</td>
-                        <td>{{is2020 ? 83 : 125 }}</td>
-                        <td>{{is2020 ? 8 : 26 }}</td>
-                        <td>{{is2020 ? 15 : 16 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Петродворцовый</td>
-                        <td>{{is2020 ? 143.823 : 143.154 }}</td>
-                        <td>{{is2020 ? 98 : 125 }}</td>
-                        <td>{{is2020 ? 41 : 39 }}</td>
-                        <td>{{is2020 ? 17 : 10 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Приморский</td>
-                        <td>{{is2020 ? 573.024 : 568.516 }}</td>
-                        <td>{{is2020 ? 398 : 479 }}</td>
-                        <td>{{is2020 ? 208 : 350 }}</td>
-                        <td>{{is2020 ? 23  : 23 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Пушкинский</td>
-                        <td>{{is2020 ? 226.336 : 217.983 }}</td>
-                        <td>{{is2020 ? 125 : 273 }}</td>
-                        <td>{{is2020 ? 68 : 155 }}</td>
-                        <td>{{is2020 ? 14 : 26 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Фрунзенский</td>
-                        <td>{{is2020 ? 386.537 : 394.972 }}</td>
-                        <td>{{is2020 ? 254 : 319 }}</td>
-                        <td>{{is2020 ? 103 : 153 }}</td>
-                        <td>{{is2020 ? 22 : 41 }}</td>
-                    </tr>
-                    <tr>
-                        <td>Центральный</td>
-                        <td>{{is2020 ? 214.572 : 216.939 }}</td>
-                        <td>{{is2020 ? 288 : 331 }}</td>
-                        <td>{{is2020 ? 23 : 45 }}</td>
-                        <td>{{is2020 ? 51 : 83 }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-
-    </section>
 </div>
 
 
@@ -1535,8 +1384,8 @@
 
         <div class="col-twelve">
             <div class="copyright">
-                <span>© ITMO 2021</span>
-                <span>Made by Kirill Litovchenko K41105c</a></span>
+                <span>© ITMO 2022</span>
+                <span>Made by Kirill Litovchenko K42103c</a></span>
             </div>
 
         </div>

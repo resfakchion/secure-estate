@@ -2,35 +2,33 @@ package org.resfa.resource;
 
 
 import io.quarkus.qute.TemplateInstance;
-import org.jboss.resteasy.annotations.jaxrs.PathParam;
 import org.resfa.pojo.District;
 import org.resfa.pojo.ParserResponse;
-import org.resfa.pojo.RealEstate;
 import org.resfa.request.SecureRealEstateRequest;
 import org.resfa.service.InparseService;
 import org.resfa.service.MapService;
+import org.resfa.service.Service;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public class SecureRealEstateResource {
     @Inject
-    public InparseService inparseService;
+    InparseService inparseService;
 
     @Inject
     MapService mapService;
+
+    @Inject
+    Service service;
 
     @Path("/filter/all")
     @Produces(MediaType.APPLICATION_JSON)
@@ -67,6 +65,7 @@ public class SecureRealEstateResource {
     @Produces(MediaType.TEXT_HTML)
     @Consumes(MediaType.APPLICATION_JSON)
     public TemplateInstance testMap(SecureRealEstateRequest request) throws Exception {
+        request.setCountFlat(service.prepareFlat(request.getCountFlat()));
         ParserResponse realEstates = inparseService.optionalRequest(request);
         if (realEstates.data != null) {
             return mapService.createMap(realEstates.data);

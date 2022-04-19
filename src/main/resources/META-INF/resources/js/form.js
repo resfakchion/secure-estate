@@ -1,5 +1,5 @@
 let request = [];
-const getValues = (ev)=>{
+const getValues = (ev) => {
     ev.preventDefault();  //to stop the form submitting
     let estate = {
         id: Date.now(),
@@ -7,7 +7,8 @@ const getValues = (ev)=>{
         costMax: document.getElementById('costMax').value,
         floorMin: document.getElementById('floorMin').value,
         floorMax: document.getElementById('floorMax').value,
-        district: document.getElementById('district').value
+        district: document.getElementById('district').value,
+        countFlat: getCheckboxValue()
     }
     request.push(estate);
     fetch("/district", {
@@ -22,6 +23,18 @@ const getValues = (ev)=>{
     });
 
 }
-document.addEventListener('DOMContentLoaded', ()=>{
+document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btn').addEventListener('click', getValues);
 });
+
+function getCheckboxValue() {
+    var result = "";
+
+    var inputs = document.querySelectorAll('.check');
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].checked) {
+            result = result + inputs[i].value;
+        }
+    }
+    return result;
+}
