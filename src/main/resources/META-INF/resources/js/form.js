@@ -10,14 +10,6 @@ const getValues = (ev)=>{
         district: document.getElementById('district').value
     }
     request.push(estate);
-    document.forms[0].reset(); // to clear the form for the next entries
-    //document.querySelector('form').reset();
-
-    localStorage.setItem('estate',JSON.stringify(estate));
-    console.log(estate);
-    //for display purposes only
-    console.warn('added' , {request} );
-
     fetch("/district", {
         redirect: "follow",
         method: "POST",
@@ -27,7 +19,6 @@ const getValues = (ev)=>{
         return res.text();
     }).then(function (html) {
         document.write(html);
-
     });
 
 }

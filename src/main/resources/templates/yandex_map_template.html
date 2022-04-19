@@ -15,7 +15,14 @@
                 zoom: 11
             });
             // Создаем кластер.
-            var clusterer = new ymaps.Clusterer({});
+            var clusterer = new ymaps.Clusterer({
+                // Используем макет "карусель"
+                clusterBalloonContentLayout: "cluster#balloonCarousel",
+                // Запрещаем зацикливание списка при постраничной навигации.
+                clusterBalloonCycling: false,
+                // Элементами панели навигации будут маркеры.
+                clusterBalloonPagerType: "marker"
+            });
             // Создаём точки
             {#for realEstate in realEstates}
             var placemark_{realEstate.id} = new ymaps.Placemark([{realEstate.lat}, {realEstate.lng}], {
@@ -49,16 +56,17 @@
                     hideIconOnBalloonOpen: true
                 });
             clusterer.add(placemark_{realEstate.id});
+            clusterer.options.balloonContentLayout = "cluster#balloonCarousel";
             {/for}
             myMap.geoObjects.add(clusterer);
         }
+
+        setTimeout(init, 1000);
     </script>
 </head>
 
 <body>
 <div id="map" style="width: 1903px; height: 961px;"></div>
-<div>Ей богдан я здесь</div>
-<button type="submit" id="submit" onclick="init()">Запуск!</button>
 </body>
 
 </html>

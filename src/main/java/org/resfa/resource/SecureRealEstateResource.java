@@ -62,20 +62,6 @@ public class SecureRealEstateResource {
         return Response.ok().type("application/json").entity(collect).build();
     }
 
-
-    @GET
-    @Path("/district/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getOptionalEstate(@PathParam String id) throws Exception {
-        District district = Arrays.stream(District.values())
-                .filter(x -> x.getNumber() == Integer.parseInt(id))
-                .findFirst()
-                .orElseThrow();
-        ParserResponse data = inparseService.getData(district);
-        return Response.ok().type("application/json").entity(data.data).build();
-    }
-
     @POST
     @Path("/district")
     @Produces(MediaType.TEXT_HTML)
@@ -95,7 +81,7 @@ public class SecureRealEstateResource {
         return mapService.mainPage();
     }
 
-    @POST
+    /*@GET
     @Path("/test")
     @Produces(MediaType.TEXT_HTML)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -131,6 +117,6 @@ public class SecureRealEstateResource {
         estates.add(estate2);
         estates.add(estate);
         return mapService.createMap(estates);
-    }
+    }*/
 
 }
